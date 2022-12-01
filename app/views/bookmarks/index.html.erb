@@ -14,14 +14,16 @@
 
     <form action="/insert_bookmark" method="post">
 
-
-      <div>
         <label for="movie_id_box"> </label>
         <input type="hidden" id="movie_id_box" name="query_movie_id" value="<%= %>">
-      </div>
+        <select>
+          <% Movie.all.order(:title).each do |a_movie| %>
+           <option> <%= a_movie.title %> </option>
+          <% end%>
+        </select>
 
       <button>
-        Create bookmark
+        Bookmark this movie!
       </button>
     </form>
   </div>
