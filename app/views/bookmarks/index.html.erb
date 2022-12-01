@@ -15,10 +15,11 @@
     <form action="/insert_bookmark" method="post">
 
         <label for="movie_id_box"> </label>
-        <input type="hidden" id="movie_id_box" name="query_movie_id" value="<%= %>">
-        <select>
+        <select name="query_movie_id">
           <% Movie.all.order(:title).each do |a_movie| %>
-           <option> <%= a_movie.title %> </option>
+           <option value="<%= a_movie.id %>"> 
+            <%= a_movie.title %> 
+          </option>
           <% end%>
         </select>
 
@@ -52,7 +53,7 @@
       <tr>
 
         <td>
-         <a href = "/movie/<%= a_bookmark.movie_id %>"> <%= Movie.where(:id => a_bookmark.movie_id).at(0).title %> </a>
+         <a href = "/movies/<%= a_bookmark.movie_id %>"> <%= Movie.where(:id => a_bookmark.movie_id).at(0).title %> </a>
         </td>
 
         <td>
