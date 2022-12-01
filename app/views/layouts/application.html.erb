@@ -26,11 +26,26 @@
            <li>
         <a href="/actors"> Actors </a>
       </li>
-           <li>
+      <li>
         <a href="/characters"> Characters </a>
       </li>
+
+      <% if session.fetch(:user_id) == nil %>
+      <li>
+        <a href="/user_sign_up"> Sign Up </a>
+      </li>
+     <li>
+        <a href="/user_sign_in"> Sign In </a>
+      </li>
+      <% else %>
+      <li>
+        <a href="/user_sign_out"> Sign Out </a>
+      </li>
+      <% end %>
     </ul>
 
+    <%= notice %>
+    <%= alert %>
     <%= yield %>
   </body>
 </html>
